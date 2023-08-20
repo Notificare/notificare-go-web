@@ -1,0 +1,27 @@
+{{page-title (t "error.title")}}
+<div class="error">
+
+  <div class="error-area">
+
+    <img class="logo" src="/assets/images/logo.svg" alt="" role="presentation">
+
+    <div class="error-box">
+
+      <Card>
+        <Card::Body class="p-4">
+          <h2>{{t "error.header"}}</h2>
+          <p>{{t "error.text" htmlSafe=true}}</p>
+        </Card::Body>
+      </Card>
+
+    </div>
+
+    <div class="back-link-area mt-2">
+      <LinkTo class="back-link" @route="dashboard">
+        {{t "shared.back"}}
+      </LinkTo>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,6 @@
+.x-toggle:checked+label>.x-toggle-light.x-toggle-btn{
+  background: theme-color("success-dark");
+}
+.x-toggle-light.x-toggle-btn::after{
+  @include box-shadow(none !important);
+}

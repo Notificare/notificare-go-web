@@ -1,0 +1,21 @@
+<div class="navigation bg-body-tertiary shadow-sm" ...attributes>
+  <div class="container">
+    <div class="nav-area">
+      <div class="logo">
+        <LinkTo @route="home">
+          <img src={{if (eq this.theme "light") "/assets/images/logo.svg" "/assets/images/logo-white.svg"}} alt="" />
+        </LinkTo>
+      </div>
+      <div class="buttons">
+        <LinkTo class="button" @route="products">{{t "components.navigation.buttons.products"}}</LinkTo>
+        <LinkTo class="button" @route="settings">{{t "components.navigation.buttons.settings"}}</LinkTo>
+        <LinkTo class="button" @route="settings"><FaIcon @icon="cart-shopping" /></LinkTo>
+        {{#if (eq this.theme "light")}}
+          <a href="" {{on "click" (fn this.changeTheme "dark")}} class="button"><FaIcon @icon="moon" /></a>
+        {{else}}
+          <a href="" {{on "click" (fn this.changeTheme "light")}} class="button"><FaIcon @icon="sun" /></a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

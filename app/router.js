@@ -10,4 +10,6 @@ Router.map(function () {
   this.route('home', { path: '/' });
   this.route('unknown', { path: '/*path' });
   this.route('restricted');
+  this.route('settings');
+  this.route('products');
 });

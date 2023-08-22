@@ -7,25 +7,17 @@ export default class ApplicationRoute extends Route {
   @service router;
 
   async beforeModel() {
-    await this.session.setup();
-    this.intl.setLocale(['en-us']);
-    window.setInterval(this.handleSessionExpiration.bind(this), 5000);
+    let theme = window.localStorage.getItem('theme');
+    if (!theme) {
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      window.localStorage.setItem('theme', theme);
+      document.documentElement.setAttribute('data-bs-theme', theme);
+    } else {
+      document.documentElement.setAttribute('data-bs-theme', theme);
+    }
   }
 
   setupController(controller, model) {
     super.setupController(controller, model);
-  }
-
-  handleSessionExpiration() {
-    if (this.session?.data?.authenticated?.expires) {
-      let now = new Date(),
-        expires = new Date(this.session.data.authenticated.expires);
-      if (expires.getTime() < now.getTime()) {
-        this.session.invalidate();
-        // this.session.on('invalidationSucceeded', () =>
-        //   this.router.transitionTo('dashboard')
-        // );
-      }
-    }
   }
 }

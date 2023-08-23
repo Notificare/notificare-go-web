@@ -7,3 +7,19 @@
 </nav>
 <h1 class="mt-3">{{t "cart.title"}}</h1>
 <p>{{t "cart.text"}}</p>
+
+<Cart::List>
+  {{#each this.cart.items as |item|}}
+    <Cart::Row @item={{item}} />
+  {{else}}
+    <Cart::NoData />
+  {{/each}}
+</Cart::List>
+
+<Cart::Total @total={{this.cart.total}} />
+
+{{#if this.cart.items}}
+  <div class="d-grid col-6 mx-auto">
+    <button {{on "click" this.purchase}} type="button" class="btn btn-primary"><FaIcon @icon="credit-card"/> Purchase</button>
+  </div>
+{{/if}}

@@ -7,3 +7,5 @@
   </ol>
 </nav>
 <h1>{{@model.title}}</h1>
+
+<button {{on "click" this.addToCart}} type="button" class="btn btn-primary"><FaIcon @icon="cart-plus"/> Add to Cart</button>

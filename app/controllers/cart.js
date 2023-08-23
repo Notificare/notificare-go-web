@@ -15,7 +15,7 @@ export default class CartController extends Controller {
         name: item.title,
         price: item.price,
         price_formatted: `€ ${item.price}`,
-      }
+      };
     });
     this.notificare.logCustomEvent('purchase', {
       total_price: this.cart.total,

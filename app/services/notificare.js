@@ -1,6 +1,12 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { configure, launch, setLogLevel, onReady, logCustom } from 'notificare-web/core';
+import {
+  configure,
+  launch,
+  setLogLevel,
+  onReady,
+  logCustom,
+} from 'notificare-web/core';
 import {
   onNotificationOpened,
   onNotificationActionOpened,

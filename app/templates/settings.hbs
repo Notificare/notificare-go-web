@@ -1,8 +1,6 @@
 {{page-title (t "settings.title")}}
-<nav class="mt-3 mb-3" aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><LinkTo class="link-offset-2" @route="home">{{t "home.title"}}</LinkTo></li>
-    <li class="breadcrumb-item active" aria-current="page">{{t "settings.title"}}</li>
-  </ol>
-</nav>
+<Breadcrumb
+  @items={{array (hash route="home" title=(t "home.title"))}}
+  @current={{t "settings.title"}}
+/>
 <h1 class="mt-3">{{t "settings.title"}}</h1>

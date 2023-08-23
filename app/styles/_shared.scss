@@ -54,3 +54,19 @@
 .minimal-link{
   text-decoration: none;
 }
+
+.remove-item{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  text-decoration: none;
+  line-height: 1;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  @include border-radius(100%);
+}

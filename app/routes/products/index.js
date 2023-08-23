@@ -1,20 +1,8 @@
-import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
-import { tracked } from '@glimmer/tracking';
+import Route from '@ember/routing/route';
 
-export default class HomeController extends Controller {
-  @service constants;
-
-  @tracked slides;
-  @tracked products;
-  onResetController() {
-    this.slides = [
-      {
-        src: 'https://placehold.co/2400x800?text=Hello+World',
-        alt: '',
-      },
-    ];
-    this.products = [
+export default class ProductsIndexRoute extends Route {
+  model() {
+    return [
       {
         id: '1',
         image: 'https://placehold.co/600x300?text=Hello+World',
@@ -39,19 +27,9 @@ export default class HomeController extends Controller {
     ];
   }
 
-  onControllerLoaded() {}
-
-  dismissAlert() {
-    this.dismissTimeout = setTimeout(
-      this.dismiss.bind(this),
-      this.constants.defaultErrorTimeout
-    );
-  }
-
-  dismiss() {}
-
-  clearDismissAlert() {
-    clearTimeout(this.dismissTimeout);
-    this.dismiss();
+  setupController(controller, model) {
+    super.setupController(controller, model);
+    controller.onResetController();
+    controller.onControllerLoaded();
   }
 }

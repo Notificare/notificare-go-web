@@ -1,9 +1,7 @@
 body{
-  //background: $body-bg;
   font-family: $font-family;
   font-size: $default-font-size;
   line-height: $default-line-height;
-  //color: $body-color;
   text-rendering: optimizeSpeed;
   font-smooth: always;
   font-smoothing: antialiased;
@@ -13,69 +11,38 @@ body{
   overflow-x: hidden;
 }
 
-%heading1 {
+%heading {
   font-family: $font-family;
-  font-size: 24px;
-  line-height: 1;
-}
-
-%heading2 {
-  font-family: $font-family;
-  font-size: 20px;
-  line-height: 1;
-}
-
-%heading3{
-  font-family: $font-family;
-  font-size: 16px;
-  line-height: 1;
-}
-
-%heading4 {
-  font-family: $font-family;
-  font-size: 14px;
-  line-height: 1;
-}
-
-%heading5 {
-  font-family: $font-family;
-  font-size: 12px;
   line-height: 1;
 }
 
 
 h1{
-  @extend %heading1;
+  @extend %heading;
   font-weight: bold;
+  font-size: 36px;
 }
 
 h2{
-  @extend %heading2;
+  @extend %heading;
   font-weight: bold;
+  font-size: 32px;
 }
 
 h3{
-  @extend %heading3;
+  @extend %heading;
   font-weight: bold;
+  font-size: 28px;
 }
 
 h4{
-  @extend %heading4;
+  @extend %heading;
   font-weight: bold;
+  font-size: 24px;
 }
 
 h5{
-  @extend %heading5;
+  @extend %heading;
   font-weight: bold;
-}
-
-a{
-  color: theme-color("links");
-  text-decoration: none;
-  border-bottom: 1px solid theme-color("links");
-  &:hover{
-    color: theme-color-level("links", 10);
-    text-decoration: none;
-    border: none;
-  }
+  font-size: 20px;
 }

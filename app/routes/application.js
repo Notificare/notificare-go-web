@@ -9,7 +9,9 @@ export default class ApplicationRoute extends Route {
   async beforeModel() {
     let theme = window.localStorage.getItem('theme');
     if (!theme) {
-      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light';
       window.localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('data-bs-theme', theme);
     } else {

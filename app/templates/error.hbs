@@ -1,27 +1,9 @@
 {{page-title (t "error.title")}}
-<div class="error">
-
-  <div class="error-area">
-
-    <img class="logo" src="/assets/images/logo.svg" alt="">
-
-    <div class="error-box">
-
-      <Card>
-        <Card::Body class="p-4">
-          <h2>{{t "error.header"}}</h2>
-          <p>{{t "error.text" htmlSafe=true}}</p>
-        </Card::Body>
-      </Card>
-
-    </div>
-
-    <div class="back-link-area mt-2">
-      <LinkTo class="back-link" @route="dashboard">
-        {{t "shared.back"}}
-      </LinkTo>
-    </div>
-
-  </div>
-
-</div>
+<nav class="mt-3 mb-3" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><LinkTo class="link-offset-2" @route="home">{{t "home.title"}}</LinkTo></li>
+    <li class="breadcrumb-item active" aria-current="page">{{t "error.title"}}</li>
+  </ol>
+</nav>
+<h1 class="mt-3">{{t "error.title"}}</h1>
+<p>{{t "error.text"}}</p>

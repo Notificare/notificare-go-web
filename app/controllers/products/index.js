@@ -1,7 +1,7 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 
-export default class ProductsController extends Controller {
+export default class ProductsIndexController extends Controller {
   @service constants;
   onResetController() {}
 

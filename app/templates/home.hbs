@@ -8,8 +8,8 @@
   @keyboard={{true}}
   @ltr={{true}}
   @pauseOnMouseEnter={{true}}
-  @showControls={{true}}
-  @showIndicators={{true}}
+  @showControls={{false}}
+  @showIndicators={{false}}
   as |car|>
   {{#each this.slides as |slide|}}
     <car.slide>
@@ -18,11 +18,26 @@
   {{/each}}
 </BsCarousel>
 
-<div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+<h2 class="mt-5">{{t "home.topProducts.title"}}</h2>
+<div class="row">
+  {{#each this.products as |product|}}
+    <div class="col-sm-4">
+      <LinkTo class="minimal-link" @route="products.detail" @model={{product}}>
+        <Product::Card
+          @product={{product}}
+        />
+      </LinkTo>
+    </div>
+  {{/each}}
+</div>
+<div class="mt-3 text-end">
+  <LinkTo class="link-offset-2" @route="products.index">{{t "home.topProducts.link"}}</LinkTo>
+</div>
+
+<div class="card bg-body-tertiary mt-5 mb-sm-0">
+  <div class="card-header">{{t "home.customEvents.title"}}</div>
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <p class="card-text">{{t "home.customEvents.text"}}</p>
+    <LinkTo @route="events" class="card-link link-offset-2">{{t "home.customEvents.link"}}</LinkTo>
   </div>
 </div>

@@ -11,5 +11,9 @@ Router.map(function () {
   this.route('unknown', { path: '/*path' });
   this.route('restricted');
   this.route('settings');
-  this.route('products');
+  this.route('products', function () {
+    this.route('detail', { path: '/detail/:product_id' });
+  });
+  this.route('events');
+  this.route('cart');
 });

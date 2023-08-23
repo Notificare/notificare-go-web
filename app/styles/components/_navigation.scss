@@ -23,7 +23,14 @@
         font-size: 18px;
         padding: 5px 10px;
         margin-right: 10px;
-        color: black;
+        color: $black;
+        text-decoration: none;
+        &:hover{
+          color: $gray-900;
+        }
+        &.active{
+          text-decoration: underline;
+        }
       }
     }
   }
@@ -34,7 +41,10 @@
     .nav-area{
       .buttons{
         .button{
-          color: white;
+          color: $white;
+          &:hover{
+            color: $gray-200;
+          }
         }
       }
     }

@@ -1,63 +1,11 @@
 .card{
   border: none !important;
-  @include border-radius(0 !important);
   .card-header{
     position: relative;
-    text-transform: none;
-    letter-spacing: 0px;
-    color: color-yiq(theme-color("light"));
-    background: theme-color("white");
+    letter-spacing: 0;
     line-height: 1.5;
-    margin: 0 4px;
-    .tooltip-button{
-      position: absolute;
-      top: 0px;
-      right: 2px;
-    }
-  }
-  .card-footer{
-    padding: 20px;
-    min-height: 90px;
-    border-top: 1px solid theme-color-level("light", 0);
-    background: theme-color("white");
-    &.card-footer-sm{
-      min-height: 83px;
-    }
-  }
-  &.min-height-100{
-    min-height: 100px;
-  }
-  &.min-height-150{
-    min-height: 150px;
-  }
-  &.min-height-200{
-    min-height: 200px;
-  }
-  &.min-height-250{
-    min-height: 250px;
-  }
-  &.min-height-300{
-    min-height: 300px;
-  }
-  &.min-height-350{
-    min-height: 350px;
-  }
-  &.min-height-400{
-    min-height: 400px;
-  }
-  &.min-height-450{
-    min-height: 450px;
-  }
-  &.min-height-500{
-    min-height: 500px;
-  }
-  &.min-height-550{
-    min-height: 550px;
-  }
-  &.min-height-600{
-    min-height: 600px;
-  }
-  &.min-height-650{
-    min-height: 650px;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 22px;
   }
 }

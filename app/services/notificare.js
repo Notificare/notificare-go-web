@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import { configure, launch, setLogLevel, onReady } from 'notificare-web/core';
+import { configure, launch, setLogLevel, onReady, logCustom } from 'notificare-web/core';
 import {
   onNotificationOpened,
   onNotificationActionOpened,
@@ -60,7 +60,7 @@ export default class NotificareService extends Service {
     setLogLevel('debug');
 
     onReady((app) => {
-      console.log(app)
+      console.log(app);
     });
 
     onNotificationOpened((notification) => {
@@ -92,7 +92,7 @@ export default class NotificareService extends Service {
     });
 
     onBadgeUpdated((badge) => {
-     this.badge = badge;
+      this.badge = badge;
     });
 
     await launch();
@@ -132,5 +132,9 @@ export default class NotificareService extends Service {
 
   async clearInbox() {
     return await clearInbox();
+  }
+
+  async logCustomEvent(name, data) {
+    return await logCustom(name, data);
   }
 }

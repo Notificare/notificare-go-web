@@ -1,38 +1,34 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default class ProductsIndexRoute extends Route {
-  model() {
-    return [
-      {
-        id: '1',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 22,
-      },
-      {
-        id: '2',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 35,
-      },
-      {
-        id: '3',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 12,
-      },
-    ];
+  @service notificare;
+  async model() {
+    try {
+      let response = await this.notificare.fetchAssets('products');
+      let products = response.map((p) => {
+        return {
+          id: p.extra.id,
+          image: p.url,
+          title: p.title,
+          description: p.description,
+          price: p.extra.price,
+          highlighted: p.extra.highlighted,
+        };
+      });
+      return products;
+    } catch (e) {
+      return [];
+    }
   }
 
   setupController(controller, model) {
     super.setupController(controller, model);
     controller.onResetController();
     controller.onControllerLoaded();
+  }
+
+  afterModel(model, transition) {
+    this.notificare.logCustomEvent('page_viewed.products');
   }
 }

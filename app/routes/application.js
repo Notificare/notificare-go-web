@@ -8,7 +8,8 @@ export default class ApplicationRoute extends Route {
   async beforeModel() {
     this.intl.setLocale(['en-us']);
     this.handleTheme();
-    this.notificare.configure();
+    await this.notificare.configure();
+    await this.notificare.launch();
   }
 
   setupController(controller, model) {

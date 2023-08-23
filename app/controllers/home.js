@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 
 export default class HomeController extends Controller {
   @service constants;
+  @service notificare;
 
   @tracked slides;
   @tracked products;
@@ -14,35 +15,31 @@ export default class HomeController extends Controller {
         alt: '',
       },
     ];
-    this.products = [
-      {
-        id: '1',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 22,
-      },
-      {
-        id: '2',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 35,
-      },
-      {
-        id: '3',
-        image: 'https://placehold.co/600x300?text=Hello+World',
-        title: 'asdf',
-        description:
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        price: 12,
-      },
-    ];
+    this.products = [];
   }
 
-  onControllerLoaded() {}
+  onControllerLoaded() {
+    this.loadProducts();
+  }
+
+  async loadProducts() {
+    try {
+      let response = await this.notificare.fetchAssets('products');
+      let products = response.map((p) => {
+        return {
+          id: p.extra.id,
+          title: p.title,
+          description: p.description,
+          price: p.extra.price,
+          highlighted: p.extra.highlighted,
+        }
+      });
+      this.products = products;
+    } catch (e) {
+      console.log(e);
+      this.products = [];
+    }
+  }
 
   dismissAlert() {
     this.dismissTimeout = setTimeout(

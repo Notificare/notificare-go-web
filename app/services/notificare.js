@@ -6,6 +6,10 @@ import {
   setLogLevel,
   onReady,
   logCustom,
+  fetchTags,
+  addTags,
+  removeTag,
+  clearTags,
 } from 'notificare-web/core';
 import {
   onNotificationOpened,
@@ -142,5 +146,21 @@ export default class NotificareService extends Service {
 
   async logCustomEvent(name, data) {
     return await logCustom(name, data);
+  }
+
+  async fetchTags() {
+    return await fetchTags();
+  }
+
+  async addTags(tags) {
+    return await addTags(tags);
+  }
+
+  async removeTag(tag) {
+    return await removeTag(tag);
+  }
+
+  async clearTags() {
+    return await clearTags();
   }
 }

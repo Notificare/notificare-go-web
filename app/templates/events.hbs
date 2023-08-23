@@ -5,8 +5,22 @@
     <li class="breadcrumb-item active" aria-current="page">{{t "events.title"}}</li>
   </ol>
 </nav>
+
 <h1 class="mt-3">{{t "events.title"}}</h1>
 <p>{{t "events.text"}}</p>
+
+{{#if this.isSuccess}}
+  <div class="alert alert-success" role="alert">
+    {{t "events.form.alerts.success"}}
+  </div>
+{{/if}}
+
+{{#if this.hasServerError}}
+  <div class="alert alert-danger" role="alert">
+    {{t "events.form.alerts.error"}}
+  </div>
+{{/if}}
+
 <form class="row g-2" {{on "submit" this.logEvent}}>
   <div class="mb-0">
     <label for="eventName" class="form-label">{{t "events.form.name.label"}}</label>

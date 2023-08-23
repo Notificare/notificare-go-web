@@ -67,7 +67,7 @@ export default class NotificareService extends Service {
   }
 
   async launch() {
-    setLogLevel('debug');
+    //setLogLevel('debug');
 
     onReady((app) => {
       console.log(app);

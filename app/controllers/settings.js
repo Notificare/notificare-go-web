@@ -18,9 +18,7 @@ export default class SettingsController extends Controller {
         await this.notificare.removeTag(tag);
       }
       this.tags.set(tag, state);
-    } catch (e) {
-
-    }
+    } catch (e) {}
   }
   onResetController() {
     this.tags = EmberObject.create({

@@ -81,6 +81,7 @@ export default class SettingsController extends Controller {
   }
 
   onControllerLoaded() {
+    this.device = this.notificare.getCurrentDevice();
     this.allowedUI = this.notificare.getAllowedUI();
     this.allowedLocation = this.notificare.hasLocationServicesEnabled();
     this.loadTags();

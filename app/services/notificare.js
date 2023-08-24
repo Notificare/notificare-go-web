@@ -16,6 +16,8 @@ import {
   fetchDoNotDisturb,
   updateDoNotDisturb,
   clearDoNotDisturb,
+  getCurrentDevice,
+  registerDevice,
 } from 'notificare-web/core';
 import {
   onNotificationOpened,
@@ -143,8 +145,20 @@ export default class NotificareService extends Service {
   async disableRemoteNotifications() {
     return await disableRemoteNotifications();
   }
+
   hasRemoteNotificationsEnabled() {
     return hasRemoteNotificationsEnabled();
+  }
+
+  async registerDevice(id, name) {
+    return await registerDevice({
+      userId: id,
+      userName: name,
+    });
+  }
+
+  getCurrentDevice() {
+    return getCurrentDevice();
   }
 
   getAllowedUI() {

@@ -1,0 +1,25 @@
+.user-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  .user-row-image{
+    width: 100px;
+    height: 100px;
+    @include border-radius(100%);
+  }
+}
+
+.user-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 15px;
+  .user-box-image{
+    width: 200px;
+    height: 200px;
+    @include border-radius(100%);
+  }
+}
+

@@ -19,3 +19,6 @@ form:
       placeholder: "Type a value"
       error: "Please type a value"
   button: "Log custom event"
+  alerts:
+    success: "Done! Event created successfully"
+    error: "Failed! Event could not be created. Ty again later."

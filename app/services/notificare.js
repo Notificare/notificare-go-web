@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import {
   configure,
   launch,
+  fetchApplication,
   setLogLevel,
   onReady,
   logCustom,
@@ -10,12 +11,22 @@ import {
   addTags,
   removeTag,
   clearTags,
+  fetchUserData,
+  updateUserData,
+  fetchDoNotDisturb,
+  updateDoNotDisturb,
+  clearDoNotDisturb,
 } from 'notificare-web/core';
 import {
   onNotificationOpened,
   onNotificationActionOpened,
+  enableRemoteNotifications,
+  disableRemoteNotifications,
+  hasRemoteNotificationsEnabled,
+  getAllowedUI,
 } from 'notificare-web/push';
 import { presentNotification, presentAction } from 'notificare-web/push-ui';
+import { enableLocationUpdates,onLocationUpdated, disableLocationUpdates, hasLocationServicesEnabled } from 'notificare-web/geo';
 import {
   onMessagePresented,
   onMessageFinishedPresenting,
@@ -37,6 +48,7 @@ import { fetchAssets } from 'notificare-web/assets';
 
 export default class NotificareService extends Service {
   @tracked badge = 0;
+  @tracked location;
 
   async configure() {
     let code = 'gpyqx52r9n6ktoloowqexkpq',
@@ -105,11 +117,61 @@ export default class NotificareService extends Service {
       this.badge = badge;
     });
 
+    onLocationUpdated((location) => {
+      this.location = location;
+    });
+
     await launch();
+  }
+
+  async fetchApplication() {
+    return await fetchApplication();
   }
 
   suppressMessages(...args) {
     setMessagesSuppressed(...args);
+  }
+
+  async enableRemoteNotifications() {
+    return await enableRemoteNotifications();
+  }
+  async disableRemoteNotifications() {
+    return await disableRemoteNotifications();
+  }
+  hasRemoteNotificationsEnabled() {
+    return hasRemoteNotificationsEnabled();
+  }
+
+  getAllowedUI() {
+    return getAllowedUI();
+  }
+
+  presentNotification(notification) {
+    presentNotification(notification);
+  }
+
+  async enableLocationUpdates() {
+    return enableLocationUpdates();
+  }
+
+  hasLocationServicesEnabled() {
+    return hasLocationServicesEnabled();
+  }
+
+  async disableLocationUpdates() {
+    return disableLocationUpdates();
+  }
+
+  async fetchDoNotDisturb() {
+    return fetchDoNotDisturb();
+  }
+
+  async updateDoNotDisturb(dnd) {
+    return updateDoNotDisturb(dnd);
+  }
+
+  async clearDoNotDisturb() {
+    return clearDoNotDisturb();
   }
 
   async fetchAssets(name) {
@@ -162,5 +224,13 @@ export default class NotificareService extends Service {
 
   async clearTags() {
     return await clearTags();
+  }
+
+  async fetchUserData() {
+    return await fetchUserData();
+  }
+
+  async updateUserData(userData) {
+    return await updateUserData(userData);
   }
 }

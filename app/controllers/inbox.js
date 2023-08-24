@@ -1,25 +1,28 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
-import EmberObject, { action } from '@ember/object';
+import { action } from '@ember/object';
 
 export default class InboxController extends Controller {
   @service constants;
   @service notificare;
 
   @action
-  async openInboxItem(item) {
+  async openInboxItem(item, e) {
+    e.preventDefault();
     try {
       let result =  await this.notificare.openInboxItem(item);
-      this.nodel.reload();
+      this.notificare.presentNotification(result);
+      this.send('refreshModel');
     } catch (e) {}
   }
 
   @action
-  async removeInboxItem(item) {
+  async removeInboxItem(item, e) {
+    e.preventDefault();
     try {
       await this.notificare.removeInboxItem(item);
-      this.nodel.reload();
+      this.send('refreshModel');
     } catch (e) {}
   }
   onResetController() {}

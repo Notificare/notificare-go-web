@@ -1,0 +1,13 @@
+.inbox-item-opened{
+  width: 10px;
+  height: 10px;
+  @include border-radius(100%);
+}
+
+.inbox-item-attachment{
+  max-width: 150px;
+}
+
+.inbox-item{
+  text-decoration: none;
+}

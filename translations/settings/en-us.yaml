@@ -7,6 +7,8 @@ notifications:
 dnd:
   title: "Do not disturb"
   text: "Configure a period of time when notifications shouldn't generate alerts in your device's notification center"
+  start: "From"
+  end: "To"
 location:
   title: "Location"
   text: "Allow us to track your locations to show you content where it's most relevant"

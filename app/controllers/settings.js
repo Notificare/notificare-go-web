@@ -2,12 +2,17 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import EmberObject, { action } from '@ember/object';
+import { restartableTask, timeout } from 'ember-concurrency';
 
 export default class SettingsController extends Controller {
   @service constants;
   @service notificare;
 
   @tracked tags;
+  @tracked allowedUI;
+  @tracked allowedLocation;
+  @tracked allowedDnd;
+  @tracked dnd;
 
   @action
   async changeTag(tag, state) {
@@ -20,6 +25,51 @@ export default class SettingsController extends Controller {
       this.tags.set(tag, state);
     } catch (e) {}
   }
+
+  @action
+  async changeNotifications(state) {
+    try {
+      if (state) {
+        await this.notificare.enableRemoteNotifications();
+      } else {
+        await this.notificare.disableRemoteNotifications();
+      }
+      this.allowedUI = state;
+    } catch (e) {}
+  }
+
+  @action
+  async changeDnd(state) {
+    try {
+      if (state) {
+        await this.notificare.updateDoNotDisturb({
+          start: '23:00',
+          end: '08:00',
+        });
+      } else {
+        await this.notificare.clearDoNotDisturb();
+      }
+      this.loadDnd();
+    } catch (e) {}
+  }
+
+  @action
+  handleDndUpdate() {
+    this.updateDnd.perform();
+  }
+
+  @action
+  async changeLocation(state) {
+    try {
+      if (state) {
+        await this.notificare.enableLocationUpdates();
+      } else {
+        await this.notificare.disableLocationUpdates();
+      }
+      this.allowedLocation = state;
+    } catch (e) {}
+  }
+
   onResetController() {
     this.tags = EmberObject.create({
       topic_announcements: false,
@@ -31,7 +81,10 @@ export default class SettingsController extends Controller {
   }
 
   onControllerLoaded() {
+    this.allowedUI = this.notificare.getAllowedUI();
+    this.allowedLocation = this.notificare.hasLocationServicesEnabled();
     this.loadTags();
+    this.loadDnd();
   }
 
   async loadTags() {
@@ -52,6 +105,34 @@ export default class SettingsController extends Controller {
       this.tags.set('topic_engineering', result.includes('topic_engineering'));
       this.tags.set('topic_staff', result.includes('topic_staff'));
     } catch (e) {}
+  }
+
+  async loadDnd() {
+    try {
+      let result = await this.notificare.fetchDoNotDisturb();
+      this.allowedDnd = result ? true : false;
+      this.dnd = result
+        ? EmberObject.create({ start: result.start, end: result.end })
+        : null;
+    } catch (e) {
+      this.allowedDnd = false;
+      this.dnd = null;
+    }
+  }
+
+  @restartableTask
+  *updateDnd() {
+    if (this.dnd.get('start') && this.dnd.get('end')) {
+      yield timeout(500);
+      try {
+        yield this.notificare.updateDoNotDisturb({
+          start: this.dnd.get('start'),
+          end: this.dnd.get('end'),
+        });
+      } catch (e) {
+
+      }
+    }
   }
 
   dismissAlert() {

@@ -1,1 +1,5 @@
 title: "Inbox"
+options:
+  title: "Options"
+  markAllRead: "Mark all as Read"
+  deleteAll: "Delete All"

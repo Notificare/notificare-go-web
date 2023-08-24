@@ -11,7 +11,7 @@ export default class InboxController extends Controller {
   async openInboxItem(item, e) {
     e.preventDefault();
     try {
-      let result =  await this.notificare.openInboxItem(item);
+      let result = await this.notificare.openInboxItem(item);
       this.notificare.presentNotification(result);
       this.send('refreshModel');
     } catch (e) {}
@@ -25,6 +25,25 @@ export default class InboxController extends Controller {
       this.send('refreshModel');
     } catch (e) {}
   }
+
+  @action
+  async markAllRead(e) {
+    e.preventDefault();
+    try {
+      await this.notificare.markAllInboxItemsAsRead();
+      this.send('refreshModel');
+    } catch (e) {}
+  }
+
+  @action
+  async deleteAll(e) {
+    e.preventDefault();
+    try {
+      await this.notificare.clearInbox();
+      this.send('refreshModel');
+    } catch (e) {}
+  }
+
   onResetController() {}
 
   onControllerLoaded() {}

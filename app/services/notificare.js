@@ -26,7 +26,12 @@ import {
   getAllowedUI,
 } from 'notificare-web/push';
 import { presentNotification, presentAction } from 'notificare-web/push-ui';
-import { enableLocationUpdates,onLocationUpdated, disableLocationUpdates, hasLocationServicesEnabled } from 'notificare-web/geo';
+import {
+  enableLocationUpdates,
+  onLocationUpdated,
+  disableLocationUpdates,
+  hasLocationServicesEnabled,
+} from 'notificare-web/geo';
 import {
   onMessagePresented,
   onMessageFinishedPresenting,

@@ -129,9 +129,7 @@ export default class SettingsController extends Controller {
           start: this.dnd.get('start'),
           end: this.dnd.get('end'),
         });
-      } catch (e) {
-
-      }
+      } catch (e) {}
     }
   }
 

@@ -55,7 +55,7 @@
       </div>
       <Input
         @type="time"
-        class="form-control w-25"
+        class="form-control input-field-width"
         @value={{this.dnd.start}}
         {{on "input" this.handleDndUpdate}}
       />
@@ -66,7 +66,7 @@
       </div>
       <Input
         @type="time"
-        class="form-control w-25"
+        class="form-control input-field-width"
         @value={{this.dnd.end}}
         {{on "input" this.handleDndUpdate}}
       />
@@ -91,7 +91,7 @@
 <small class="text-body-secondary d-block mt-1 mb-5">{{t "settings.location.text"}}</small>
 
 <h6 class="text-uppercase">{{t "settings.tags.title"}}</h6>
-<ul class="list-group">
+<ul class="list-group mb-3">
   {{#each-in this.tags as |key value|}}
     <li class="list-group-item d-flex justify-content-between align-items-start p-3">
       <div class="ms-2 me-auto">

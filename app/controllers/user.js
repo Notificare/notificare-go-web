@@ -63,9 +63,9 @@ export default class UserController extends Controller {
   sanitizeInputValues(field, userData) {
     let v = userData[field.key],
       output = v || null;
-    if (field.type == "boolean") {
+    if (field.type == 'boolean') {
       output = v === 'true' ? true : false;
-    } else if (field.type == "date") {
+    } else if (field.type == 'date') {
       output = v ? new Date(v).toISOString().slice(0, 10) : null;
     }
     return output;

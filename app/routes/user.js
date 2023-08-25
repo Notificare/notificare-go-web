@@ -20,7 +20,7 @@ export default class UserRoute extends Route {
 
   async model() {
     //return this.notificare.getCurrentDevice();
-    return {userId: 'asdfasdf', userName: 'asdfasdf', id: 'asdfasdf'};
+    return { userId: 'asdfasdf', userName: 'asdfasdf', id: 'asdfasdf' };
   }
 
   setupController(controller, model) {

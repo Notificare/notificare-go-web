@@ -30,7 +30,7 @@
         </div>
         <Input
           @type="number"
-          class="form-control w-25"
+          class="form-control input-field-width"
           @value={{field.value}}
           {{on "input" this.handleFieldsUpdate}}
         />
@@ -42,7 +42,7 @@
         </div>
         <Input
           @type="date"
-          class="form-control w-25"
+          class="form-control input-field-width"
           @value={{field.value}}
           {{on "input" this.handleFieldsUpdate}}
         />
@@ -54,7 +54,7 @@
         </div>
         <Input
           @type="text"
-          class="form-control w-25"
+          class="form-control input-field-width"
           @value={{field.value}}
           {{on "input" this.handleFieldsUpdate}}
         />
@@ -68,5 +68,5 @@
 </ul>
 
 <div class="list-group">
-  <a href="" {{on "click" this.unregisterDevice}} class="list-group-item list-group-item-action link-danger link-offset-2">{{t "user.unregister"}}</a>
+  <a href="" {{on "click" this.unregisterDevice}} class="list-group-item list-group-item-action link-danger link-offset-2 mb-3">{{t "user.unregister"}}</a>
 </div>

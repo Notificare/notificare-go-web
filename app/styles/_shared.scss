@@ -71,3 +71,16 @@
   border: none !important;
   @include border-radius(100%);
 }
+
+.input-field-width{
+  width: 25% !important;
+}
+
+@include media-breakpoint-only(xs) {
+  .main-content{
+    padding-bottom: 60px;
+  }
+  .input-field-width{
+    width: 50% !important;
+  }
+}

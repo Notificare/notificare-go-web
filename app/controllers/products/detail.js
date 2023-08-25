@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
+import EmberObject, { action } from '@ember/object';
 
 export default class ProductsDetailController extends Controller {
   @service constants;
@@ -8,7 +8,7 @@ export default class ProductsDetailController extends Controller {
 
   @action
   addToCart() {
-    this.cart.add(this.model);
+    this.cart.add(EmberObject.create(this.model));
   }
 
   onResetController() {}

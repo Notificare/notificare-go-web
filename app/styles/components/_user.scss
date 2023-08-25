@@ -23,7 +23,7 @@
   }
 }
 
-@include media-breakpoint-only(xs) {
+@include media-breakpoint-down(md) {
   .anonymous{
     flex-direction: column;
     .btn{

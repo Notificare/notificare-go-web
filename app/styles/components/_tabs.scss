@@ -19,7 +19,7 @@
 }
 
 
-@include media-breakpoint-only(xs) {
+@include media-breakpoint-down(md) {
   .tabs{
     display: block;
     position: fixed;

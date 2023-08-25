@@ -76,7 +76,7 @@
   width: 25% !important;
 }
 
-@include media-breakpoint-only(xs) {
+@include media-breakpoint-down(md) {
   .main-content{
     padding-bottom: 60px;
   }

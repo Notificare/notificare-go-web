@@ -12,3 +12,11 @@
     max-width: 150px;
   }
 }
+
+@include media-breakpoint-down(md) {
+  .inbox-row{
+    .inbox-row-attachment{
+      max-width: 80px;
+    }
+  }
+}

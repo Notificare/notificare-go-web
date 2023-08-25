@@ -8,6 +8,12 @@ export default class CartController extends Controller {
   @service('shopping-cart') cart;
 
   @action
+  async removeItem(item, e) {
+    e.preventDefault();
+    this.cart.remove(item);
+  }
+
+  @action
   purchase() {
     let products = this.cart.items.map((item) => {
       return {

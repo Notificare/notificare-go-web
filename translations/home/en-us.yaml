@@ -1,4 +1,7 @@
 title: "Home"
+intro:
+  title: "Welcome to the Notificare Go app"
+  text: "Here you can play around with all the functionalities provided by the Notificare platform."
 topProducts:
   title: "Top Products"
   link: "Browse more"

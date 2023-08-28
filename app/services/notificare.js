@@ -89,7 +89,7 @@ export default class NotificareService extends Service {
     //setLogLevel('debug');
 
     onReady((app) => {
-      console.log(app);
+      //console.log(app);
     });
 
     onNotificationOpened((notification) => {
@@ -101,23 +101,23 @@ export default class NotificareService extends Service {
     });
 
     onMessagePresented((message) => {
-      console.log(message);
+      //console.log(message);
     });
 
     onMessageFinishedPresenting((message) => {
-      console.log(message);
+      //console.log(message);
     });
 
     onMessageFailedToPresent((message) => {
-      console.log(message);
+      //console.log(message);
     });
 
     onActionExecuted((message) => {
-      console.log(message);
+      //console.log(message);
     });
 
     onActionFailedToExecute((message) => {
-      console.log(message);
+      //console.log(message);
     });
 
     onBadgeUpdated((badge) => {

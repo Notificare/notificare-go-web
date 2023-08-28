@@ -25,6 +25,26 @@ module.exports = function (defaults) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
+    // autoImport: {
+    //   alias: {
+    //     'notificare-in-app-messaging-css': 'notificare-web/in-app-messaging/in-app-messaging.css',
+    //     'notificare-push-css': 'notificare-web/push/push.css',
+    //     'notificare-push-ui-css': 'notificare-web/push-ui/push-ui.css',
+    //   },
+    //   webpack: {
+    //     module: {
+    //       rules: [
+    //         {
+    //           test: /\.css$/i,
+    //           use: [
+    //             'style-loader',
+    //             'css-loader',
+    //           ],
+    //         },
+    //       ],
+    //     },
+    //   },
+    // },
   });
 
   // Use `app.import` to add additional libraries to the generated
@@ -39,8 +59,8 @@ module.exports = function (defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
-  // app.import('node_modules/notificare-web/in-app-messaging/in-app-messaging.css');
-  // app.import('node_modules/notificare-web/push/push.css');
-  // app.import('node_modules/notificare-web/push-ui/push-ui.css');
+  app.import('node_modules/@notificare/web-in-app-messaging/dist/notificare-in-app-messaging.css');
+  app.import('node_modules/@notificare/web-push/dist/notificare-push.css');
+  app.import('node_modules/@notificare/web-push-ui/dist/notificare-push-ui.css');
   return app.toTree();
 };

@@ -7,16 +7,28 @@ export default class HomeController extends Controller {
   @service notificare;
 
   @tracked slides;
+
   onResetController() {
-    this.slides = [
-      {
-        src: 'https://placehold.co/2400x800?text=Hello+World',
-        alt: '',
-      },
-    ];
+    this.slides = [];
   }
 
-  onControllerLoaded() {}
+  onControllerLoaded() {
+    this.loadHero();
+  }
+
+  async loadHero() {
+    try {
+      let response = await this.notificare.fetchAssets('hero-web');
+      this.slides = response.map((a) => {
+        return {
+          src: a.url,
+          alt: a.title,
+        }
+      });
+    } catch (e) {
+      this.slides = [];
+    }
+  }
 
   dismissAlert() {
     this.dismissTimeout = setTimeout(

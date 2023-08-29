@@ -11,16 +11,15 @@ export default class UserRoute extends Route {
     this.refresh();
   }
 
-  // beforeModel() {
-  //   let device = this.notificare.getCurrentDevice();
-  //   if (!device.userId) {
-  //     this.router.transitionTo('restricted');
-  //   }
-  // }
+  beforeModel() {
+    let device = this.notificare.getCurrentDevice();
+    if (!device.userId) {
+      this.router.transitionTo('restricted');
+    }
+  }
 
   async model() {
-    //return this.notificare.getCurrentDevice();
-    return { userId: 'asdfasdf', userName: 'asdfasdf', id: 'asdfasdf' };
+    return this.notificare.getCurrentDevice();
   }
 
   setupController(controller, model) {

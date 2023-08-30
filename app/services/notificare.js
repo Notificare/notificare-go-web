@@ -77,7 +77,7 @@ export default class NotificareService extends Service {
     );
     let result = await response.json();
     configure({
-      useTestEnvironment: true,
+      useTestEnvironment: cloud === 'cloud-test' ? true : false,
       applicationKey: result?.demo?.applicationKey,
       applicationSecret: result?.demo?.applicationSecret,
     });

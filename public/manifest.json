@@ -2,7 +2,7 @@
   "short_name": "Notificare",
   "name": "Notificare Go",
   "start_url": "/",
-  "background_color": "#232c2a",
+  "background_color": "#2b3035",
   "description": "Notificare Go App let's you play around with all the functionalities provided by the Notificare platform.",
   "display": "standalone",
   "orientation": "portrait-primary",

@@ -18,12 +18,12 @@ export default class HomeController extends Controller {
 
   async loadHero() {
     try {
-      let response = await this.notificare.fetchAssets('hero-web');
+      let response = await this.notificare.fetchAssets('hero');
       this.slides = response.map((a) => {
         return {
           src: a.url,
           alt: a.title,
-        }
+        };
       });
     } catch (e) {
       this.slides = [];

@@ -4,10 +4,11 @@ import EmberObject, { action } from '@ember/object';
 
 export default class ProductsDetailController extends Controller {
   @service constants;
+  @service notificare;
   @service('shopping-cart') cart;
 
   @action
-  addToCart() {
+  async addToCart() {
     this.cart.add(EmberObject.create(this.model));
   }
 

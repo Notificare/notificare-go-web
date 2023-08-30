@@ -14,23 +14,10 @@ export default class CartController extends Controller {
   }
 
   @action
-  purchase() {
-    let products = this.cart.items.map((item) => {
-      return {
-        id: item.id,
-        name: item.title,
-        price: item.price,
-        price_formatted: `€ ${item.price}`,
-      };
-    });
-    this.notificare.logCustomEvent('purchase', {
-      total_price: this.cart.total,
-      total_price_formatted: `€ ${this.cart.total}`,
-      total_items: this.cart.items.length,
-      products: products,
-    });
-    this.cart.empty();
+  async purchase() {
+    this.cart.purchase();
   }
+
   onResetController() {}
 
   onControllerLoaded() {}

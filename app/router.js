@@ -18,4 +18,5 @@ Router.map(function () {
   this.route('cart');
   this.route('inbox');
   this.route('user');
+  this.route('fail');
 });

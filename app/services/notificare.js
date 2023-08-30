@@ -63,17 +63,15 @@ export default class NotificareService extends Service {
       host = document.location.host.split('.');
 
     if (host.length > 1) {
-      if (host[1] === 'demo-test') {
+      if (host[1] === 'go-test') {
         code = host[0];
         cloud = 'cloud-test';
-      } else if (host[1] === 'demo') {
+      } else if (host[1] === 'go') {
         code = host[0];
-        cloud = 'cloud';
-      } else {
-        code = 'xxx';
         cloud = 'cloud';
       }
     }
+
     let response = await fetch(
       `https://${cloud}.notifica.re/api/download/demo/code/${code}`
     );

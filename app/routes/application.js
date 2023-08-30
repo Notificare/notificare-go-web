@@ -4,12 +4,17 @@ import { inject as service } from '@ember/service';
 export default class ApplicationRoute extends Route {
   @service intl;
   @service notificare;
+  @service router;
 
   async beforeModel() {
     this.intl.setLocale(['en-us']);
     this.handleTheme();
-    await this.notificare.configure();
-    await this.notificare.launch();
+    try {
+      await this.notificare.configure();
+      await this.notificare.launch();
+    } catch (e) {
+      this.router.transitionTo('fail');
+    }
   }
 
   setupController(controller, model) {

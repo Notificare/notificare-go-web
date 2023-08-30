@@ -91,7 +91,7 @@
 <small class="text-body-secondary d-block mt-1 mb-5">{{t "settings.location.text"}}</small>
 
 <h6 class="text-uppercase">{{t "settings.tags.title"}}</h6>
-<ul class="list-group mb-3">
+<ul class="list-group mb-5">
   {{#each-in this.tags as |key value|}}
     <li class="list-group-item d-flex justify-content-between align-items-start p-3">
       <div class="ms-2 me-auto">
@@ -106,3 +106,9 @@
     </li>
   {{/each-in}}
 </ul>
+
+<div class="text-center">
+  <h5>{{this.app.name}}</h5>
+  <p class="mb-0">{{this.app.id}}</p>
+  <p>{{this.version}}</p>
+</div>

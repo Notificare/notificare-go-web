@@ -13,6 +13,8 @@ export default class SettingsController extends Controller {
   @tracked allowedLocation;
   @tracked allowedDnd;
   @tracked dnd;
+  @tracked app;
+  @tracked version;
 
   @action
   async changeTag(tag, state) {
@@ -86,6 +88,8 @@ export default class SettingsController extends Controller {
     this.allowedLocation = this.notificare.hasLocationServicesEnabled();
     this.loadTags();
     this.loadDnd();
+    this.loadApplication();
+    this.loadVersion();
   }
 
   async loadTags() {
@@ -118,6 +122,25 @@ export default class SettingsController extends Controller {
     } catch (e) {
       this.allowedDnd = false;
       this.dnd = null;
+    }
+  }
+
+  async loadApplication() {
+    try {
+      let result = await this.notificare.fetchApplication();
+      this.app = result;
+    } catch (e) {
+      this.app = null;
+    }
+  }
+
+  async loadVersion() {
+    try {
+      let result = await window.fetch('/status.json');
+      let response = await result.json();
+      this.version = `v${response?.version}`;
+    } catch (e) {
+      this.version = 'v1.0.0';
     }
   }
 

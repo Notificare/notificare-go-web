@@ -2,7 +2,11 @@
   {{#if @device.userId}}
     <LinkTo @route="user" class="list-group-item list-group-item-action p-0">
       <div class="user-row">
-        <img src="https://placehold.co/300x300?text=No+Preview" class="user-row-image me-2" alt="" />
+        <Gravatar
+          class="user-row-image me-2"
+          @userId={{@device.userId}}
+          @size="300"
+        />
         <div class="ms-2 me-auto">
           <h4 class="text-truncate">{{@device.userName}}</h4>
           <p class="mb-0 text-truncate">{{@device.userId}}</p>

@@ -1,6 +1,10 @@
 <div class="list-group mb-5">
   <div class="user-box">
-    <img src="https://placehold.co/400x400?text=No+Preview" class="user-box-image me-2" alt="" />
+    <Gravatar
+      class="user-box-image me-2"
+      @userId={{@device.userId}}
+      @size="400"
+    />
     <div class="text-center p-3">
       <h4>{{@device.userName}}</h4>
       <p class="mb-0">{{@device.userId}}</p>

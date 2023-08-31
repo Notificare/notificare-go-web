@@ -44,7 +44,10 @@ export default class UserRowComponent extends Component {
     } else {
       try {
         this.isProcessing = true;
-        await this.notificare.registerDevice(this.userId.trim(), this.userName.trim());
+        await this.notificare.registerDevice(
+          this.userId.trim(),
+          this.userName.trim()
+        );
         this.userId = null;
         this.userName = null;
         this.isProcessing = false;

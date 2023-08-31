@@ -27,11 +27,7 @@ export default class UserRowComponent extends Component {
     this.validator.createSchema({
       userId: string()
         .nullable()
-        .required(this.intl.t('components.user.modalUser.form.userId.error'))
-        .matches(
-          /^([a-zA-Z0-9_-]+)$/,
-          this.intl.t('components.user.modalUser.form.userId.invalid')
-        ),
+        .required(this.intl.t('components.user.modalUser.form.userId.error')),
       userName: string()
         .nullable()
         .required(this.intl.t('components.user.modalUser.form.userName.error')),
@@ -48,7 +44,7 @@ export default class UserRowComponent extends Component {
     } else {
       try {
         this.isProcessing = true;
-        await this.notificare.registerDevice(this.userId, this.userName);
+        await this.notificare.registerDevice(this.userId.trim(), this.userName.trim());
         this.userId = null;
         this.userName = null;
         this.isProcessing = false;

@@ -107,6 +107,7 @@ export default class SettingsController extends Controller {
         'topic_product_updates',
         result.includes('topic_product_updates')
       );
+      this.tags.set('topic_marketing', result.includes('topic_marketing'));
       this.tags.set('topic_engineering', result.includes('topic_engineering'));
       this.tags.set('topic_staff', result.includes('topic_staff'));
     } catch (e) {}

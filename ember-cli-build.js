@@ -25,26 +25,6 @@ module.exports = function (defaults) {
     'ember-simple-auth': {
       useSessionSetupMethod: true,
     },
-    // autoImport: {
-    //   alias: {
-    //     'notificare-in-app-messaging-css': 'notificare-web/in-app-messaging/in-app-messaging.css',
-    //     'notificare-push-css': 'notificare-web/push/push.css',
-    //     'notificare-push-ui-css': 'notificare-web/push-ui/push-ui.css',
-    //   },
-    //   webpack: {
-    //     module: {
-    //       rules: [
-    //         {
-    //           test: /\.css$/i,
-    //           use: [
-    //             'style-loader',
-    //             'css-loader',
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //   },
-    // },
   });
 
   // Use `app.import` to add additional libraries to the generated

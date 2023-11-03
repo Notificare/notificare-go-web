@@ -11,6 +11,7 @@ export default class NavigationComponent extends Component {
     e.preventDefault();
     window.localStorage.setItem('theme', theme);
     document.documentElement.setAttribute('data-bs-theme', theme);
+    document.documentElement.setAttribute('data-notificare-theme', theme);
     this.theme = theme;
   }
 

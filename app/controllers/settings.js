@@ -77,6 +77,7 @@ export default class SettingsController extends Controller {
       topic_announcements: false,
       topic_best_practices: false,
       topic_product_updates: false,
+      topic_marketing: false,
       topic_engineering: false,
       topic_staff: false,
     });

@@ -77,6 +77,7 @@ export default class SettingsController extends Controller {
       topic_announcements: false,
       topic_best_practices: false,
       topic_product_updates: false,
+      topic_marketing: false,
       topic_engineering: false,
       topic_staff: false,
     });
@@ -107,6 +108,7 @@ export default class SettingsController extends Controller {
         'topic_product_updates',
         result.includes('topic_product_updates')
       );
+      this.tags.set('topic_marketing', result.includes('topic_marketing'));
       this.tags.set('topic_engineering', result.includes('topic_engineering'));
       this.tags.set('topic_staff', result.includes('topic_staff'));
     } catch (e) {}

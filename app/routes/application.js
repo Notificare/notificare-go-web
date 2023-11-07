@@ -29,8 +29,10 @@ export default class ApplicationRoute extends Route {
         : 'light';
       window.localStorage.setItem('theme', theme);
       document.documentElement.setAttribute('data-bs-theme', theme);
+      document.documentElement.setAttribute('data-notificare-theme', theme);
     } else {
       document.documentElement.setAttribute('data-bs-theme', theme);
+      document.documentElement.setAttribute('data-notificare-theme', theme);
     }
   }
 }

@@ -1,3 +1,6 @@
+1.1.0 01-07-2024
+- Update notificare-web to 3.6.0
+
 1.0.5 21-06-2024
 - Changed logo (GO-19)
 

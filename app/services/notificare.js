@@ -60,7 +60,11 @@ export default class NotificareService extends Service {
   async configure() {
     let code = 'gpyqx52r9n6ktoloowqexkpq',
       cloud = 'cloud-test',
-      host = document.location.host.split('.');
+      host = document.location.host.split('.'),
+      hosts = {
+        cloudApi: 'cloud-test.notifica.re',
+        restApi: 'push-test.notifica.re',
+      };
 
     if (host.length > 1) {
       if (host[1] === 'go-test') {
@@ -69,6 +73,7 @@ export default class NotificareService extends Service {
       } else if (host[1] === 'go') {
         code = host[0];
         cloud = 'cloud';
+        hosts = undefined;
       }
     }
 
@@ -77,7 +82,7 @@ export default class NotificareService extends Service {
     );
     let result = await response.json();
     configure({
-      useTestEnvironment: cloud === 'cloud-test' ? true : false,
+      hosts: hosts,
       applicationKey: result?.demo?.applicationKey,
       applicationSecret: result?.demo?.applicationSecret,
     });

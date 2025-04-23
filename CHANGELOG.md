@@ -1,3 +1,6 @@
+1.2.2 23-04-2025
+- Update notificare-web to 4.2.0
+
 1.2.1 16-11-2024
 - Update notificare-web to 4.0.1
 
